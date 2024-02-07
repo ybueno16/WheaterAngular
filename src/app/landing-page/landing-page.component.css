@@ -1,0 +1,36 @@
+.header {
+  width: 100vw;
+  height: 100%;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  text-align: center;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.main-content {
+  padding: 40vh;
+  text-align: center;
+}
+
+#home h1 {
+  font-size: 2rem;
+}
+
+#home p {
+  font-size: 1rem;
+}
