@@ -1,4 +1,4 @@
-export interface Root {
+export interface WeatherData {
   coord: Coord;
   weather: Weather[];
   base: string;
@@ -38,7 +38,6 @@ export interface Main {
 export interface Wind {
   speed: number;
   deg: number;
-  gust: number;
 }
 
 export interface Clouds {

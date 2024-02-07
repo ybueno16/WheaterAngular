@@ -1,10 +1,22 @@
-<div class="container">
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input
+      type="text"
+      placeholder="Search City"
+      name="city"
+      [(ngModel)]="cityName"
+    />
+  </form>
+</div>
+<div class="container" *ngIf="weatherData">
   <div class="upper-data">
-    <img src="../assets/hot.png" *ngIf="weatherData?.main?.temp > 15" />
-    <img src="../assets/cold.png" *ngIf="weatherData?.main?.temp <= 15" />
+    <img src="../assets/hot.png" *ngIf="weatherData.main.temp > 15" />
+    <img src="../assets/cold.png" *ngIf="weatherData.main.temp <= 15" />
     <div class="wheater-data">
-      <div class="location">Limeira</div>
-      <div class="tempearature">{{ 14.4 | number : "1.0-0" }}°C</div>
+      <div class="location">{{ weatherData.name }}</div>
+      <div class="tempearature">
+        {{ weatherData.main.temp | number : "1.0-0" }}°C
+      </div>
     </div>
   </div>
   <div class="lower-data">
@@ -15,7 +27,7 @@
           <img src="../assets/min.png" />
           <span>min</span>
         </div>
-        <div class="info-block-value">10°C</div>
+        <div class="info-block-value">{{ weatherData.main.temp_min }}°C</div>
       </div>
 
       <div class="info-block">
@@ -23,7 +35,7 @@
           <img src="../assets/max.png" />
           <span>max</span>
         </div>
-        <div class="info-block-value">20°C</div>
+        <div class="info-block-value">{{ weatherData.main.temp_max }}</div>
       </div>
 
       <div class="info-block">
@@ -31,7 +43,7 @@
           <img src="../assets/humidity.png" />
           <span>humidity</span>
         </div>
-        <div class="info-block-value">4%</div>
+        <div class="info-block-value">{{ weatherData.main.humidity }}%</div>
       </div>
 
       <div class="info-block">
@@ -39,7 +51,7 @@
           <img src="../assets/wind.png" />
           <span>wind</span>
         </div>
-        <div class="info-block-value">20Km/H</div>
+        <div class="info-block-value">{{ weatherData.wind.speed }} Km/H</div>
       </div>
     </div>
   </div>

@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environmnet } from '../../environmnet/environmnet'; // Corrected typo in import path
-
-export interface WeatherData {}
+import { environmnet } from '../../environmnet/environmnet';
+import { WeatherData } from '../weather.model';
 
 @Injectable({
   providedIn: 'root',
