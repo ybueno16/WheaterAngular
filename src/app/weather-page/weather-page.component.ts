@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
 import { WeatherData } from './weather.model';
+import { FormControl } from '@angular/forms';
+import { Subscription, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-weather-page',
@@ -8,14 +10,24 @@ import { WeatherData } from './weather.model';
   styleUrls: ['./weather-page.component.css'],
 })
 //TODO Lazy Load no formulario de cidade
-export class WeatherPageComponent implements OnInit {
+export class WeatherPageComponent implements OnInit, OnDestroy {
   cityName = 'Limeira';
   weatherData?: WeatherData;
 
   constructor(private weatherService: WeatherService) {}
+  public searchControl = new FormControl();
+  private searchSubscription!: Subscription;
 
+  ngOnDestroy(): void {
+    this.searchSubscription.unsubscribe();
+  }
   ngOnInit(): void {
     this.getWeatherData(this.cityName);
+    this.searchSubscription = this.searchControl.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe((value) => {
+        console.log('search value', value);
+      });
   }
 
   fahrenheitToCelsius(fahrenheit: number) {

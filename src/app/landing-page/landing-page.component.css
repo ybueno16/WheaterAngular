@@ -10,6 +10,8 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  line-height: 10vh;
+  height: 7vh;
 }
 
 .menu {
@@ -33,4 +35,9 @@
 
 #home p {
   font-size: 1rem;
+}
+
+.logo {
+  width: 4vw;
+  height: 9vh;
 }
